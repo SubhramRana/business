@@ -11,7 +11,7 @@ import (
 
 func PlaceOrder(c * gin.Context){
 	order:=OrderEntity.Order{}
-	err:=c.BindJSON(&order)
+	err:=OrderEntity.DecodeJSON(c,&order)
 	if err!=nil{
 		c.AbortWithStatus(http.StatusNotFound)
 		return

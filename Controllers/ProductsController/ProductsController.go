@@ -21,7 +21,7 @@ func AddProduct(c * gin.Context){
 
 	//checking for validation error
 	product := ProductEntity.Product{}
-	err:=c.BindJSON(&product)
+	err:=ProductEntity.DecodeJSON(c,&product)
 	if err!=nil{
 		c.AbortWithStatusJSON(http.StatusBadRequest,gin.H{
 			"message":"Invalid syntax",
@@ -52,7 +52,7 @@ func UpdateProduct(c * gin.Context){
 
 	//checking for wrong syntax in the payload
 	product := ProductEntity.Product{}
-	err=c.BindJSON(&product)
+	err=ProductEntity.DecodeJSON(c,&product)
 	if err!=nil{
 		c.AbortWithStatusJSON(http.StatusBadRequest,gin.H{
 			"message":"Invalid input data",

@@ -1,5 +1,6 @@
 package CustomersController
 
+import "C"
 import (
 	"business/Entities/CustomerEntity"
 	"business/Services/CustomerServices"
@@ -10,7 +11,7 @@ import (
 func AddCustomer(c * gin.Context){
 	//checking for validation
 	customer := CustomerEntity.Customer{}
-	err := c.BindJSON(&customer)
+	err := CustomerEntity.DecodeJSON(c,&customer)
 	if err!=nil{
 		//fmt.Println("not bound with JSON")
 		c.AbortWithStatusJSON(http.StatusBadRequest,gin.H{

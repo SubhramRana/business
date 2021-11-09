@@ -21,7 +21,7 @@ Others
 
 
 REVIEW TASKS:
-    use logs instead of print(logrus pkg)
+    use logs instead of print(logrus pkg)------Done
     use encode/json std pkg instead of context.Contex.bindJSON()
     use validation instead of defining tags in go structs
     learn .gitginore
