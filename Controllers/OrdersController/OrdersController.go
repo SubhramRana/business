@@ -3,8 +3,8 @@ package OrdersController
 import (
 	"business/Entities/OrderEntity"
 	"business/Services/OrderServices"
-	"fmt"
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	"net/http"
 	"strconv"
 )
@@ -66,7 +66,7 @@ func GetOrders(c * gin.Context){
 			"status_code":http.StatusOK,
 		})
 	}else{//user id is not given
-		fmt.Println("here...")
+		log.Info("All orders are requested")
 		//return all orders
 		err:= OrderServices.GetAllOrders(&orders)
 		if err!=nil{

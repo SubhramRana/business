@@ -12,6 +12,9 @@ import (
 	"log"
 )
 func main(){
+	//log configuration
+	Config.LogConfig()
+
 	//make a Mysql database connection
 	dsn := Config.DBURL(Config.BuildDBConfig())
 	var dbErr error

@@ -4,3 +4,4 @@
 3- while updating product, how to build the API that, it provides, "I can update quantity or price or both"
 4-explain the locking mechanism
 5-What db.Session() does in gorm
+6-how many goroutines can be generated during request handling
