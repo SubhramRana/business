@@ -10,10 +10,20 @@ import (
 )
 
 func PlaceOrder(c * gin.Context){
+
+	//deserialization of JOSN payload
 	order:=OrderEntity.Order{}
 	err:=OrderEntity.DecodeJSON(c,&order)
 	if err!=nil{
 		c.AbortWithStatus(http.StatusNotFound)
+		return
+	}
+
+	//input validation
+	if err = order.Validate() ; err!=nil{
+		c.AbortWithStatusJSON(http.StatusBadRequest,gin.H{
+			"message" : "Invalid Input",
+		})
 		return
 	}
 

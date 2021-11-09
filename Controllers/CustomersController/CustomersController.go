@@ -9,7 +9,8 @@ import (
 )
 
 func AddCustomer(c * gin.Context){
-	//checking for validation
+
+	//deserializing the input JSON payload
 	customer := CustomerEntity.Customer{}
 	err := CustomerEntity.DecodeJSON(c,&customer)
 	if err!=nil{
@@ -20,6 +21,15 @@ func AddCustomer(c * gin.Context){
 		return
 	}
 
+	//checking for validation
+	if err = customer.Validate() ; err!=nil{
+		c.AbortWithStatusJSON(http.StatusBadRequest,gin.H{
+			"message" : "Invalid Input",
+		})
+		return
+	}
+
+	//Try to perform transaction
 	if err = CustomerServices.AddCustomer(&customer) ; err!=nil{
 		c.AbortWithStatusJSON(http.StatusInternalServerError,gin.H{
 			"message":"Please try again later",
@@ -27,6 +37,7 @@ func AddCustomer(c * gin.Context){
 		return
 	}
 
+	//on [success]
 	c.JSON(http.StatusCreated, gin.H{
 		"data":             customer,
 		"response_code":    http.StatusCreated,

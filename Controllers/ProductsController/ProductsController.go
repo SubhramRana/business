@@ -29,6 +29,14 @@ func AddProduct(c * gin.Context){
 		return
 	}
 
+	//input validation
+	if err = product.Validate() ; err!=nil{
+		c.AbortWithStatusJSON(http.StatusBadRequest,gin.H{
+			"message" : "Invalid Input",
+		})
+		return
+	}
+
 	if err= ProductServices.AddProduct(&product) ; err!=nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError,gin.H{
 			"message": err,
@@ -59,8 +67,15 @@ func UpdateProduct(c * gin.Context){
 		})
 		return
 	}
+	//log.Info(product)
 
-	product.Name=""//can't change the name of a product
+	//input validation
+	if err = product.Validate() ; err!=nil{
+		c.AbortWithStatusJSON(http.StatusBadRequest,gin.H{
+			"message" : "Invalid Input",
+		})
+		return
+	}
 
 	ProdId := uint32(prodId)
 	err = ProductServices.UpdateProduct(ProdId,&product)
