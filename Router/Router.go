@@ -8,6 +8,9 @@ import (
 )
 
 func SetupRouter(server *gin.Engine){
+
+		//login user(customer/retailer)
+		server.POST("/login",CustomersController.Login)
 		//Add user
 		server.POST("/customers",CustomersController.AddCustomer)//done
 

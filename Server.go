@@ -21,6 +21,7 @@ func main(){
 	if Config.DB , dbErr = gorm.Open(mysql.Open(dsn)) ; dbErr!=nil{
 		log.Fatal(dbErr.Error())
 	}
+
 	//migrate the database with pre-defined schemas
 	Config.DB.AutoMigrate(
 		&CustomerEntity.Customer{},
