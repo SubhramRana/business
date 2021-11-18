@@ -1,0 +1,7 @@
+1-ozzo validation not working in "customerController"
+2-How to enforce retailer for unique product name----//solved (applu 'unique' gorm tag on the field of a struct which
+    u want to make unique , DB will do the rest of the work)
+3- while updating product, how to build the API that, it provides, "I can update quantity or price or both"
+4-explain the locking mechanism
+5-What db.Session() does in gorm
+6-how many goroutines can be generated during request handling

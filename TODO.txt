@@ -1,0 +1,36 @@
+Web
+    error handling
+    middlewares
+        Authentication
+        Authorisation
+Database
+    error handling
+    DB config options
+    Model build
+    Db queries
+    DB transactions
+    defining various constraints on database schemas
+    define cascading(delete/update) in associated schemas
+Others
+    logging
+    testing
+    validate input
+    impo - - - how to avoid customers to request for adding a product(authorisation)
+    implement pagination while fetching large dataset
+
+
+
+REVIEW TASKS:
+    use logs instead of print(logrus pkg)------Done
+    use encode/json std pkg instead of context.Contex.bindJSON()
+    use validation instead of defining tags in go structs
+    learn .gitginore
+    auth implementation
+
+    my qus :
+    what is tmp folder
+    what is .IDEA folder
+    various purposes of logging
+    when to use Panic() in server
+
+
